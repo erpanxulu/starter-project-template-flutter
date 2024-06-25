@@ -1,36 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mytodo_mobx_app/features/auth/stores/auth_store.dart';
-import 'package:mytodo_mobx_app/features/auth/views/login_view.dart';
 import 'package:mytodo_mobx_app/features/todo/stores/todo_store.dart';
-import 'package:mytodo_mobx_app/features/todo/views/home_view.dart';
 import 'package:mytodo_mobx_app/injection.dart';
+import 'package:mytodo_mobx_app/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   await setupSl();
   runApp(const MyApp());
 }
-
-final GoRouter _router = GoRouter(
-  routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return  LoginView();
-      },
-      routes: <RouteBase>[
-        GoRoute(
-          path: 'home',
-          builder: (BuildContext context, GoRouterState state) {
-            return const HomeView();
-          },
-        ),
-      ],
-    ),
-  ],
-);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -54,7 +33,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade700),
             useMaterial3: true,
           ),
-          routerConfig: _router,
+          routerConfig: AppRoutes().router,
         ),
       ),
     );

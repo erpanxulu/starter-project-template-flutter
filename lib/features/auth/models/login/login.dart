@@ -1,5 +1,4 @@
 
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mytodo_mobx_app/features/auth/models/login/data_login.dart';
 
